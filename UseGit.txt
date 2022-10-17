@@ -1,0 +1,51 @@
+This is an introduction of how to use git with windows subsystem linux
+
+1) open ubuntu bash, and configure your git account:
+
+	git config --global user.email "<put your email here>"
+	git config --global user.name "<put your username here>"
+
+2) In the teminal navigate to where you want to save the repository, preferrably inside of the windows file system if you want to view pictures
+
+	cd /mnt/c/Users/....
+
+3) Clone the repository
+
+	git clone https://github.com/EmericDeylgat/Inverse-Design.git
+
+   It will ask for your username and password
+
+4) Now check if it actually got cloned into that dorectory you wanted, it should be there
+   Also get into the repository on your computer	
+	
+	cd Inverse-Design
+
+5) I ve already made a new branch called 90-10-mmi, to avoid accidentally committing to the master branch use:
+		
+	git checkout 90-10-mmi		 
+   
+   Now a new file named 90-10-mmi.py should have appeard in the directory 
+   In this file you should work and commit things, later when it is ready we then going to merge this branch with the master branch
+
+6) When you have worked on the file don't forget to commit and push your changes to the repository
+   But before if you want you can check what files have changed and what is currently inside of the commit with:
+	
+	git status
+
+   If the file and are highlighted in red this means that you still have to add them to the commit. This is done by:
+	
+	git add 90-10-mmi.py (or any other new file you'd like to commit)
+   
+   Then commit and push your changes
+
+	git commit -m "<put some message here, maybe short description of what you have done>"
+	push -u origin 90-10-mmi
+
+7) Check online if it worked 
+
+8) To get the work that someone else has done and merge it yours: use 
+
+	git pull origin
+
+   
+BTW all these commands are to be executed while you are in the windows folder of Inverse-Design

@@ -1,0 +1,48 @@
+1) Install Ubuntu 18.04 subsystem
+2) In terminal:
+
+	sudo apt-get update
+	sudo apt-get upgrade (takes a while)
+
+	sudo apt-get install build-essential gfortran openmpi-bin libopenmpi-dev python3 python3-dev python3-pip git python3-tk	 (install all python 3 version)
+	sudo apt-get install build-essential gfortran openmpi-bin libopenmpi-dev python python-dev python-pip git python-tk (also install python packages)
+	pip3 install requests matplotlib numpy scipy mpi4py h5py shapely future --user (might get stuck at mpi4py for 5 min, if it takes significantly longer just restart)
+		
+	git clone https://github.com/anstmichaels/emopt.git
+	cd emopt
+
+	python3 install.py (takes a long while)
+
+	python3 setup.py install --user (now emopt is installed)
+
+3) To be able to see matplotlib plots:
+	
+	a. export DISPLAY=localhost:0.0 (has to written in terminal everytime you restart it)
+	b. Download and install Xming (https://sourceforge.net/projects/xming/) 
+
+4) To be able to run examples, navigate the emopt folder using the following commands: 
+(since the emopt folder is installed in the linux file system and you cant get in there via the windows file system)
+	
+	1) ls (list a the contents of a folder)
+	2) cd <foldername> (open the folde)
+	3) python3 <python file>.py (execute python file)
+	4) cd .. (get back to previous folder)
+
+6) To be able to run the wg_bend.py in the emopt/examples/waveguide_bend/ folder
+	
+	1) mkdir data (to make a new folder named data where the program will save its data in a h5py file)
+	2) python3 wg_bend.py 
+
+7) To run any file more efficiently (more cpu usage):
+
+	1) echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+	2) mpirun -n 12 (# of threads available) python3 <python file>.py -ksp_monitor_true_residual (to momitor iteration progresses when under tolerance threshold of 1*e-6)
+
+8) open a bash shell in any directory with right click:
+
+	1) open regedit
+	2) go to Computer\HKEY_CLASSES_ROOT\Directory\Background\shell\
+	3) make new key named: "bash" 
+	4) edit value to: "Open a bash shell here"
+	5) in bash make a new key, name it command
+	6) edit value of command to "C:\Windows\System32\bash.exe"
